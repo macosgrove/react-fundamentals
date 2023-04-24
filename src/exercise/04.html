@@ -66,8 +66,7 @@
 <h2>Extra Credit 3</h2>
 <div id="root3"></div>
 <script type="text/babel">
-  // See if you can change your component function name so people can use it with JSX more easily!
-  const PropTypes = {
+  const PropTypes3 = {
     str(props, propName, componentName) {
       if (typeof props[propName] !== 'string') {
         return new Error(`${propName} must be a string`)
@@ -84,8 +83,8 @@
   }
 
   Message.propTypes = {
-    greeting: PropTypes.str,
-    subject: PropTypes.str,
+    greeting: PropTypes3.str,
+    subject: PropTypes3.str,
   }
 
   ReactDOM.createRoot(document.getElementById('root3')).render(
@@ -93,6 +92,56 @@
       <Message greeting="Hello" subject="World"/>
       <Message greeting="Goodbye" subject="World"/>
     </div>
+  )
+</script>
+
+<h2>Extra Credit 4</h2>
+<div id="root4"></div>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+<script type="text/babel">
+  function Message({subject, greeting}) {
+    return (
+      <div className="message">
+        {greeting}, {subject}
+      </div>
+    )
+  }
+
+  Message.propTypes = {
+    greeting: PropTypes.string.isRequired,
+    subject: PropTypes.string.isRequired,
+  }
+
+  ReactDOM.createRoot(document.getElementById('root4')).render(
+    <div>
+      <Message greeting="Hello" subject="World"/>
+      <Message greeting="Goodbye" subject="World"/>
+    </div>
+  )
+</script>
+
+<h2>Extra Credit 5</h2>
+<div id="root5"></div>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+<script type="text/babel">
+  function Message({subject, greeting}) {
+    return (
+      <div className="message">
+        {greeting}, {subject}
+      </div>
+    )
+  }
+
+  Message.propTypes = {
+    greeting: PropTypes.string.isRequired,
+    subject: PropTypes.string.isRequired,
+  }
+
+  ReactDOM.createRoot(document.getElementById('root5')).render(
+    <>
+      <Message greeting="Hello" subject="World"/>
+      <Message greeting="Goodbye" subject="World"/>
+    </>
   )
 </script>
 
