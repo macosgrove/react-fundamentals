@@ -27,23 +27,18 @@ function UsernameForm({onSubmitUsername}) {
   }
 
   function handleChange(event) {
-    const isValid = inputRef.current.value === inputRef.current.value.toLowerCase()
-    setErrorMessage(isValid ? null : "Username must be lowercase");
-    setCount(count + 1)
+    setUsername(inputRef.current.value.toLowerCase());
   }
 
   const inputRef = useRef(null);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [count, setCount] = useState(0);
+  const [username, setUsername] = useState("");
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username">Username:</label>
-        <input ref={inputRef} id="username" type="text" onChange={handleChange} />
-        <p style={{ color: "green" }}>{count}</p>
-        <p role="alert" style={{ color: "red" }}>{errorMessage}</p>
+        <input value={username} ref={inputRef} id="username" type="text" onChange={handleChange} />
       </div>
-      <button type="submit" disabled={Boolean(errorMessage)}>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   )
 }
